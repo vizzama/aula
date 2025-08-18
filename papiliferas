@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neoplasias Papilíferas da Mama</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .slide {
+            min-height: 90vh;
+            scroll-snap-align: start;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            display: none; /* Hide all slides by default */
+        }
+        .slide.active {
+            display: flex; /* Show active slide */
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .card {
+            background-color: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            border: 1px solid #e5e7eb;
+        }
+        .tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-weight: 500;
+            font-size: 0.875rem;
+        }
+        .btn-nav {
+            position: fixed;
+            bottom: 2rem;
+            background-color: #4f46e5;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            transition: all 0.2s ease-in-out;
+            cursor: pointer;
+            z-index: 10;
+        }
+        .btn-nav:hover {
+            background-color: #4338ca;
+            transform: translateY(-2px);
+        }
+        .btn-nav:disabled {
+            background-color: #a5b4fc;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .progress-bar-container {
+            position: fixed;
+            bottom: 7rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            max-width: 400px;
+            height: 8px;
+            background-color: #e5e7eb;
+            border-radius: 4px;
+            z-index: 10;
+        }
+        .progress-bar {
+            height: 100%;
+            background-color: #4f46e5;
+            border-radius: 4px;
+            transition: width 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <div id="presentation-container" class="w-full max-w-5xl mx-auto p-4 md:p-8">
+
+        <!-- Slide 1: Título -->
+        <div id="slide-1" class="slide active flex-col justify-center items-center text-center">
+            <div class="card w-full">
+                <h1 class="text-4xl md:text-5xl font-bold text-indigo-600 mb-4">Neoplasias Papilíferas da Mama</h1>
+                <p class="text-xl md:text-2xl text-gray-600">Uma Análise da Definição, Classificação e Manejo Clínico</p>
+                <div class="mt-8">
+                    <svg class="w-24 h-24 mx-auto text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                </div>
+                <p class="mt-6 text-gray-500">Baseado na 5ª Edição da Classificação da OMS (2019)</p>
+            </div>
+        </div>
+
+        <!-- Slide 2: Definição -->
+        <div id="slide-2" class="slide flex-col justify-center items-center">
+            <div class="card w-full">
+                <h2 class="text-3xl font-bold text-indigo-600 mb-6">O que são Neoplasias Papilíferas?</h2>
+                <div class="text-lg space-y-4 text-left">
+                    <p><strong class="text-gray-900">Definição:</strong> Tumores mamários caracterizados pela proliferação de células epiteliais em projeções ramificadas (arborescentes), cada uma contendo um eixo fibrovascular central.</p>
+                    <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-800 p-4 rounded-r-lg">
+                        <strong class="font-semibold">Ponto-chave:</strong> A presença do <span class="font-bold">eixo fibrovascular</span> é crucial. Isso os diferencia do padrão micropapilar, que não possui esse eixo.
+                    </div>
+                </div>
+                <div class="mt-8 text-center">
+                    <p class="font-semibold text-xl mb-2">Estrutura de uma Papila</p>
+                    <svg viewBox="0 0 200 100" class="w-full max-w-md mx-auto border rounded-lg p-2 bg-white">
+                        <path d="M 100,90 C 70,70 60,40 70,20" stroke="#4f46e5" fill="none" stroke-width="2"/>
+                        <path d="M 100,90 C 130,70 140,40 130,20" stroke="#4f46e5" fill="none" stroke-width="2"/>
+                        <line x1="100" y1="90" x2="100" y2="30" stroke="#ef4444" stroke-width="3" stroke-dasharray="4"/>
+                        <text x="105" y="60" font-size="8" fill="#ef4444" font-weight="bold">Eixo Fibrovascular</text>
+                        <text x="60" y="15" font-size="8" fill="#4f46e5" font-weight="bold">Células Epiteliais</text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Classificação -->
+        <div id="slide-3" class="slide flex-col justify-center items-center">
+            <div class="card w-full">
+                <h2 class="text-3xl font-bold text-indigo-600 mb-6">O Espectro das Lesões Papilíferas</h2>
+                <p class="text-lg mb-8 text-center">A classificação da OMS (2019) abrange um espectro de benignidade à malignidade.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="p-6 bg-green-50 rounded-lg border border-green-200">
+                        <h3 class="font-bold text-xl text-green-800 mb-2">Benigno</h3>
+                        <p class="text-green-700">Papiloma Intraductal (IDP)</p>
+                    </div>
+                    <div class="p-6 bg-red-50 rounded-lg border border-red-200">
+                        <h3 class="font-bold text-xl text-red-800 mb-2">Maligno (In Situ & Invasivo)</h3>
+                        <ul class="list-disc list-inside space-y-2 text-red-700">
+                            <li>Carcinoma Ductal In Situ Papilífero (Papillary DCIS)</li>
+                            <li>Carcinoma Papilífero Encapsulado (EPC)</li>
+                            <li>Carcinoma Papilífero Sólido (SPC)</li>
+                            <li>Carcinoma Papilífero Invasivo (IPC) - <em>Raro</em></li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="mt-8 text-sm text-gray-500 text-center"><strong>Nota:</strong> A diferenciação exata requer análise histopatológica e imuno-histoquímica.</p>
+            </div>
+        </div>
+
+        <!-- Slide 4: Papiloma Intraductal (IDP) -->
+        <div id="slide-4" class="slide flex-col justify-center items-center">
+            <div class="card w-full">
+                <h2 class="text-3xl font-bold text-indigo-600 mb-2">Papiloma Intraductal (IDP)</h2>
+                <p class="tag bg-green-100 text-green-800 mb-6">Lesão Benigna</p>
+                <div class="grid md:grid-cols-2 gap-8 text-left items-center">
+                    <div>
+                        <h3 class="font-semibold text-xl mb-3">Características</h3>
+                        <ul class="list-disc list-inside space-y-2">
+                            <li>Projeções digitiformes com eixo fibrovascular.</li>
+                            <li><strong>Camada dupla de células:</strong>
+                                <ul class="list-circle list-inside ml-6">
+                                    <li>Epiteliais luminais + Mioepiteliais</li>
+                                </ul>
+                            </li>
+                             <li><strong>IHC:</strong> Células mioepiteliais (p63+, CK5/6+) confirmam benignidade.</li>
+                            <li>Apresentação: nódulo palpável ou descarga papilar.</li>
+                        </ul>
+                         <div class="mt-6 bg-indigo-50 p-4 rounded-lg">
+                            <p class="font-semibold text-indigo-800">A camada de células mioepiteliais contínua é a principal característica que diferencia o papiloma das lesões malignas.</p>
+                        </div>
+                    </div>
+                    <div class="mt-6 md:mt-0">
+                        <img src="https://www.modernpathology.org/cms/10.1038/s41379-020-00732-3/asset/c127da9a-79b2-40a4-a7f3-8012f394342f/main.assets/gr2.jpg" alt="Papiloma intraductal macroscópico e microfotografia" class="rounded-lg shadow-md mx-auto border">
+                        <p class="text-xs text-center text-gray-500 mt-2 italic">Papiloma intraductal macroscópico e microfotografia com coloração de p63/CK14 destacando as células mioepiteliais.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Papillary DCIS -->
+        <div id="slide-5" class="slide flex-col justify-center items-center">
+            <div class="card w-full">
+                <h2 class="text-3xl font-bold text-indigo-600 mb-2">Carcinoma Papilífero Intraductal (Papillary DCIS)</h2>
+                <p class="tag bg-orange-100 text-orange-800 mb-6">Carcinoma In Situ</p>
+                <div class="grid md:grid-cols-2 gap-8 text-left items-center">
+                    <div>
+                        <p class="text-lg">É uma variante de CDIS onde a proliferação neoplásica forma papilas.</p>
+                        <h3 class="font-semibold text-xl mt-4">Diferença Crucial do Papiloma:</h3>
+                        <div class="flex items-start gap-4 p-4 bg-gray-100 rounded-lg mt-2">
+                            <svg class="w-8 h-8 text-red-500 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <div>
+                                <p class="font-bold text-lg">Ausência de Células Mioepiteliais nos eixos das papilas.</p>
+                                <p class="text-gray-600">As células mioepiteliais (p63+) estão presentes <span class="font-semibold">apenas na periferia</span> do ducto.</p>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="mt-6 md:mt-0">
+                        <img src="https://www.modernpathology.org/cms/10.1038/s41379-020-00732-3/asset/8def842e-0e0e-4db9-8a9c-bf90eef0b910/main.assets/gr5.jpg" alt="Proliferação papilar intraductal típica de papillary DCIS" class="rounded-lg shadow-md mx-auto border">
+                        <p class="text-xs text-center text-gray-500 mt-2 italic">Proliferação papilar intraductal típica de papillary DCIS.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 6: EPC -->
+        <div id="slide-6" class="slide flex-col justify-center items-center">
+            <div class="card w-full">
+                <h2 class="text-3xl font-bold text-indigo-600 mb-2">Carcinoma Papilífero Encapsulado (EPC)</h2>
+                <p class="tag bg-orange-100 text-orange-800 mb-6">Carcinoma In Situ</p>
+                 <div class="grid md:grid-cols-2 gap-8 text-left items-center">
+                    <div>
+                        <p class="text-lg">Neoplasia expansiva dentro de um espaço cístico com uma parede fibrosa espessa (cápsula).</p>
+                        <h3 class="font-semibold text-xl mt-4">Característica Definitiva:</h3>
+                        <div class="flex items-start gap-4 p-4 bg-red-100 border-l-4 border-red-500 rounded-r-lg mt-2">
+                             <svg class="w-8 h-8 text-red-600 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"></path></svg>
+                            <div>
+                                <p class="font-bold text-lg">Ausência TOTAL de células mioepiteliais.</p>
+                                <p class="text-red-800">Nem no interior, nem na periferia.</p>
+                            </div>
+                        </div>
+                        <p class="text-lg mt-4">A maioria é de perfil luminal (ER+/PR+, HER2-).</p>
+                    </div>
+                    <div class="mt-6 md:mt-0">
+                        <img src="https://www.modernpathology.org/cms/10.1038/s41379-020-00732-3/asset/3ab8f180-0172-487f-9374-31267c071573/main.assets/gr8.jpg" alt="Lesão papilar bem delimitada em cavidade cística" class="rounded-lg shadow-md mx-auto border">
+                        <p class="text-xs text-center text-gray-500 mt-2 italic">Lesão papilar bem delimitada em cavidade cística com cápsula fibrosa.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: SPC -->
+        <div id="slide-7" class="slide flex-col justify-center items-center">
+            <div class="card w-full">
+                <h2 class="text-3xl font-bold text-indigo-600 mb-2">Carcinoma Papilífero Sólido (SPC)</h2>
+                <p class="tag bg-orange-100 text-orange-800 mb-6">Carcinoma In Situ</p>
+                 <div class="grid md:grid-cols-2 gap-8 text-left items-center">
+                    <div>
+                        <p class="text-lg">Neoplasia que cresce em massas sólidas e nodulares. Frequente em mulheres idosas.</p>
+                        <h3 class="font-semibold text-xl mt-4">Características Notáveis:</h3>
+                         <ul class="list-disc list-inside space-y-2">
+                            <li>Arquitetura nodular sólida.</li>
+                            <li>Geralmente sem células mioepiteliais.</li>
+                            <li class="font-bold text-indigo-700">Frequentemente expressa marcadores neuroendócrinos (Sinaptofisina+).</li>
+                        </ul>
+                    </div>
+                    <div class="mt-6 md:mt-0">
+                        <img src="https://www.modernpathology.org/cms/10.1038/s41379-020-00732-3/asset/dce1fecf-e2a2-4a37-8627-544929bbf12e/main.assets/gr14.jpg" alt="Carcinoma papilífero sólido in situ" class="rounded-lg shadow-md mx-auto border">
+                        <p class="text-xs text-center text-gray-500 mt-2 italic">Carcinoma papilífero sólido in situ com estrutura nodular e imuno-histoquímica para sinaptofisina.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 8: IPC -->
+        <div id="slide-8" class="slide flex-col justify-center items-center">
+            <div class="card w-full">
+                <h2 class="text-3xl font-bold text-indigo-600 mb-2">Carcinoma Papilífero Invasivo (IPC)</h2>
+                <p class="tag bg-red-100 text-red-800 mb-6">Carcinoma Invasivo</p>
+                <div class="text-left space-y-4">
+                    <p class="text-lg">É um carcinoma invasivo raro, definido quando <strong class="text-red-700">>90% da sua arquitetura é papilar</strong>.</p>
+                    <ul class="list-disc list-inside space-y-2 mt-4">
+                        <li>É um diagnóstico de exclusão; não se aplica a invasões focais em EPC ou SPC.</li>
+                        <li>Presume-se ausência total de células mioepiteliais em todas as papilas.</li>
+                        <li>O prognóstico é limitado pela raridade, mas geralmente são tumores de baixo grau e perfil luminal.</li>
+                        <li>Tratamento segue as diretrizes para carcinoma invasivo da mama.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 9: Tabela Comparativa -->
+        <div id="slide-9" class="slide flex-col justify-center items-center">
+            <div class="card w-full overflow-x-auto">
+                <h2 class="text-3xl font-bold text-indigo-600 mb-6 text-center">Diagnóstico Diferencial: Resumo</h2>
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-indigo-50">
+                            <th class="p-3 font-semibold text-indigo-800 border-b-2 border-indigo-200">Lesão</th>
+                            <th class="p-3 font-semibold text-indigo-800 border-b-2 border-indigo-200">Mioepiteliais (p63) nos Eixos</th>
+                            <th class="p-3 font-semibold text-indigo-800 border-b-2 border-indigo-200">Mioepiteliais (p63) na Periferia</th>
+                            <th class="p-3 font-semibold text-indigo-800 border-b-2 border-indigo-200">Característica Distintiva</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="hover:bg-gray-50">
+                            <td class="p-3 border-b border-gray-200 font-bold">Papiloma (IDP)</td>
+                            <td class="p-3 border-b border-gray-200 text-center text-2xl text-green-500">✔️</td>
+                            <td class="p-3 border-b border-gray-200 text-center text-2xl text-green-500">✔️</td>
+                            <td class="p-3 border-b border-gray-200">Camada dupla contínua</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="p-3 border-b border-gray-200 font-bold">Papillary DCIS</td>
+                            <td class="p-3 border-b border-gray-200 text-center text-2xl text-red-500">❌</td>
+                            <td class="p-3 border-b border-gray-200 text-center text-2xl text-green-500">✔️</td>
+                            <td class="p-3 border-b border-gray-200">Perda de MEC nos eixos</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="p-3 border-b border-gray-200 font-bold">EPC</td>
+                            <td class="p-3 border-b border-gray-200 text-center text-2xl text-red-500">❌</td>
+                            <td class="p-3 border-b border-gray-200 text-center text-2xl text-red-500">❌</td>
+                            <td class="p-3 border-b border-gray-200">Cápsula fibrosa espessa</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="p-3 border-b border-gray-200 font-bold">SPC</td>
+                            <td class="p-3 border-b border-gray-200 text-center text-2xl text-red-500">❌</td>
+                            <td class="p-3 border-b border-gray-200 text-center text-2xl text-red-500">❌</td>
+                            <td class="p-3 border-b border-gray-200">Padrão sólido, marcadores neuroendócrinos</td>
+                        </tr>
+                         <tr class="hover:bg-gray-50">
+                            <td class="p-3 font-bold">IPC</td>
+                            <td class="p-3 text-center text-2xl text-red-500">❌</td>
+                            <td class="p-3 text-center text-2xl text-red-500">❌</td>
+                            <td class="p-3">Invasão estromal com >90% de padrão papilar</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Slide 10: Manejo Clínico -->
+        <div id="slide-10" class="slide flex-col justify-center items-center">
+            <div class="card w-full">
+                <h2 class="text-3xl font-bold text-indigo-600 mb-6">Conduta Clínica e Achados Práticos</h2>
+                <div class="space-y-6">
+                    <div class="p-4 bg-green-50 rounded-lg">
+                        <h3 class="font-bold text-lg text-green-800">Papiloma Intraductal (sem atipia)</h3>
+                        <p class="text-green-700">A taxa de "upgrade" para malignidade é muito baixa (<2%). Em casos assintomáticos e concordantes, o manejo conservador com vigilância por imagem (ou excisão completa por VAB) é uma opção segura e aceita.</p>
+                    </div>
+                    <div class="p-4 bg-orange-50 rounded-lg">
+                        <h3 class="font-bold text-lg text-orange-800">Papillary DCIS / EPC / SPC</h3>
+                        <p class="text-orange-700">São tratados como CDIS. A conduta padrão é a ressecção cirúrgica com margens livres.</p>
+                    </div>
+                    <div class="p-4 bg-red-50 rounded-lg">
+                        <h3 class="font-bold text-lg text-red-800">Carcinoma Papilífero Invasivo (IPC)</h3>
+                        <p class="text-red-700">O tratamento segue os protocolos para carcinoma mamário invasivo, incluindo cirurgia, avaliação de linfonodos e terapia adjuvante conforme o perfil do tumor.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 11: Conclusão -->
+        <div id="slide-11" class="slide flex-col justify-center items-center text-center">
+            <div class="card w-full">
+                <h2 class="text-3xl font-bold text-indigo-600 mb-6">Pontos Essenciais</h2>
+                <div class="text-lg space-y-4 text-left max-w-2xl mx-auto">
+                    <div class="flex items-start"><div class="flex-shrink-0 text-indigo-500 font-bold text-2xl mr-3">1.</div><p>As lesões papilíferas formam um espectro complexo, de benignas a invasivas.</p></div>
+                    <div class="flex items-start"><div class="flex-shrink-0 text-indigo-500 font-bold text-2xl mr-3">2.</div><p>O diagnóstico diferencial é <strong class="text-gray-900">exclusivamente anatomopatológico</strong>, sendo a imuno-histoquímica (especialmente p63) fundamental.</p></div>
+                    <div class="flex items-start"><div class="flex-shrink-0 text-indigo-500 font-bold text-2xl mr-3">3.</div><p>A presença e a localização das <strong class="text-gray-900">células mioepiteliais</strong> são o guia principal para distinguir entre papiloma, DCIS papilífero e outras lesões.</p></div>
+                    <div class="flex items-start"><div class="flex-shrink-0 text-indigo-500 font-bold text-2xl mr-3">4.</div><p>A conduta clínica é altamente dependente do diagnóstico preciso, variando de vigilância a tratamento oncológico completo.</p></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 12: Referências -->
+        <div id="slide-12" class="slide flex-col justify-center items-center">
+            <div class="card w-full">
+                <h2 class="text-3xl font-bold text-indigo-600 mb-6">Referências</h2>
+                <div class="text-sm space-y-3 text-gray-600">
+                    <p>TAY, T. K. Y.; TAN, P. H. Papillary neoplasms of the breast: reviewing the spectrum. <strong>Modern Pathology</strong>, v. 34, n. 6, p. 1044–1061, 2021.</p>
+                    <p>BROGI, E.; KRYSTEL-WHITTEMORE, M. Papillary neoplasms of the breast including upgrade rates and management of intraductal papilloma without atypia diagnosed at core needle biopsy. <strong>Modern Pathology</strong>, v. 34, Suppl. 1, p. 78–93, 2021.</p>
+                    <p>ELFGEN, C. et al. Third International Consensus Conference on lesions of uncertain malignant potential in the breast (B3 lesions). <strong>Virchows Archiv</strong>, v. 483, n. 1, p. 5–20, 2023.</p>
+                    <p>TSE, G. M. Papillary lesions of the breast. <strong>Diagnostic Histopathology</strong>, v. 24, n. 2, p. 64–76, 2018.</p>
+                    <p>WHO Classification of Tumours Editorial Board. Breast tumours. 5. ed. Lyon: IARC, 2019. (WHO classification of tumour series, v. 2).</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Navigation -->
+    <div class="progress-bar-container">
+        <div id="progress-bar" class="progress-bar"></div>
+    </div>
+    <button id="prevBtn" class="btn-nav left-4 md:left-8">Anterior</button>
+    <button id="nextBtn" class="btn-nav right-4 md:right-8">Próximo</button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('.slide');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const progressBar = document.getElementById('progress-bar');
+            let currentSlide = 0;
+            const totalSlides = slides.length;
+
+            function showSlide(index) {
+                slides.forEach((slide, i) => {
+                    slide.classList.toggle('active', i === index);
+                });
+                updateNavigation();
+                updateProgressBar();
+            }
+
+            function updateNavigation() {
+                prevBtn.disabled = currentSlide === 0;
+                nextBtn.disabled = currentSlide === totalSlides - 1;
+                
+                if (currentSlide === totalSlides - 1) {
+                    nextBtn.textContent = 'Fim';
+                } else {
+                    nextBtn.textContent = 'Próximo';
+                }
+            }
+
+            function updateProgressBar() {
+                const progressPercentage = ((currentSlide + 1) / totalSlides) * 100;
+                progressBar.style.width = `${progressPercentage}%`;
+            }
+
+            nextBtn.addEventListener('click', () => {
+                if (currentSlide < totalSlides - 1) {
+                    currentSlide++;
+                    showSlide(currentSlide);
+                }
+            });
+
+            prevBtn.addEventListener('click', () => {
+                if (currentSlide > 0) {
+                    currentSlide--;
+                    showSlide(currentSlide);
+                }
+            });
+
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowRight' && !nextBtn.disabled) {
+                    nextBtn.click();
+                } else if (e.key === 'ArrowLeft' && !prevBtn.disabled) {
+                    prevBtn.click();
+                }
+            });
+
+            // Initial setup
+            showSlide(currentSlide);
+        });
+    </script>
+</body>
+</html>
