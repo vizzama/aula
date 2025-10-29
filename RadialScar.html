@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula: Cicatriz Radial / LES</title>
+    <!-- Carrega o Tailwind CSS para estilização -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Carrega a fonte Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Estilo base */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+        }
+        /* Classe para os slides (escondidos por padrão) */
+        .slide {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        /* Classe para o slide ativo (visível) */
+        .slide-active {
+            display: block;
+        }
+        /* Animação de fade-in */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Estilos para os botões de navegação */
+        .nav-button {
+            @apply px-6 py-2 rounded-lg text-white font-semibold shadow-md transition-all duration-300;
+        }
+        .nav-button:disabled {
+            @apply bg-gray-400 cursor-not-allowed;
+        }
+        /* Assegura que as imagens não ultrapassem a altura do container */
+        .slide img {
+            max-height: 400px; /* Altura máxima para as imagens */
+            width: auto; /* Largura automática para manter proporção */
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body class="flex flex-col items-center justify-center min-h-screen p-4 md:p-8">
+
+    <!-- Container principal da apresentação -->
+    <div class="w-full max-w-5xl bg-white rounded-xl shadow-2xl overflow-hidden">
+        
+        <!-- Cabeçalho Fixo -->
+        <header class="bg-gradient-to-r from-blue-800 to-blue-600 text-white p-4 text-center shadow-md">
+            <h1 class="text-xl md:text-2xl font-bold">Apresentação: Cicatriz Radial (CR) e Lesão Esclerosante Complexa (LEC)</h1>
+            <p class="text-sm md:text-base opacity-90">Uma Perspectiva Histopatológica</p>
+        </header>
+
+        <!-- Conteúdo do Slide -->
+        <main id="slide-container" class="p-6 md:p-10 min-h-[500px] relative">
+
+            <!-- Slide 1: Título e Introdução -->
+            <div id="slide-1" class="slide slide-active">
+                <h2 class="text-3xl font-bold text-blue-900 mb-6">A Lesão Estrelada: Decifrando a CR e a LEC</h2>
+                <div class="space-y-4 text-gray-800 text-lg">
+                    
+                    <p class="text-xl mt-4">Esta apresentação foca nos aspectos histopatológicos da Cicatriz Radial e da Lesão Esclerosante Complexa, seu diagnóstico diferencial e implicações prognósticas.</p>
+                    
+                    <div class="bg-blue-50 p-6 rounded-lg border border-blue-200 mt-12">
+                        <h3 class="font-semibold text-blue-800 text-xl">Objetivos da Aula:</h3>
+                        <ul class="list-disc list-inside ml-4 mt-4 space-y-2 text-lg">
+                            <li>Nomenclatura (CR vs. LEC)</li>
+                            <li>Histopatologia (A Chave do Diagnóstico)</li>
+                            <li>Diferencial com Carcinoma</li>
+                            <li>Potencial Biológico e Risco Relativo</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2: Nomenclatura e Definição (WHO) -->
+            <div id="slide-2" class="slide">
+                <h2 class="text-3xl font-bold text-blue-900 mb-6">1. Nomenclatura e Definição (WHO)</h2>
+                <div class="space-y-4 text-gray-800 text-lg">
+                    <div class="bg-gray-100 p-4 rounded-lg border">
+                        <p class="font-semibold">Definição (WHO, 5ª Ed.):</p>
+                        <blockquote class="italic text-gray-700 pl-4 border-l-4 border-blue-500 mt-2">
+                            "Uma lesão benigna com fibroelastose e estruturas glandulares aprisionadas, com ou sem lesões epiteliais proliferativas."
+                        </blockquote>
+                    </div>
+                    <p class="text-xl pt-4"><strong>Qual a diferença entre Cicatriz Radial (CR) e Lesão Esclerosante Complexa (LEC)?</strong></p>
+                    <p>Do ponto de vista histopatológico, são um **ESPECTRO** da mesma entidade.</p>
+                    <ul class="list-disc list-inside ml-4 space-y-2">
+                        <li><strong>Cicatriz Radial (CR):</strong> Refere-se a lesões pequenas, classicamente <strong class="text-blue-700">&lt; 1 cm</strong>. Geralmente mais organizadas.</li>
+                        <li><strong>Lesão Esclerosante Complexa (LEC):</strong> Refere-se a lesões maiores, <strong class="text-blue-700">&gt; 1 cm</strong>. Frequentemente mais desorganizadas e complexas.</li>
+                    </ul>
+                    <p class="font-semibold text-xl text-red-700 bg-red-50 p-3 rounded-lg">Ponto-chave: A única diferença real é o TAMANHO. A morfologia é a mesma.</p>
+                </div>
+            </div>
+
+            <!-- Slide 3: Histopatologia (Baixo Aumento) -->
+            <div id="slide-3" class="slide">
+                <h2 class="text-3xl font-bold text-blue-900 mb-6">2. Histopatologia: A Arquitetura Zonal (Baixo Aumento)</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+                    <!-- Coluna de Texto -->
+                    <div class="space-y-4 text-gray-800 text-lg">
+                        <p class="text-xl font-semibold">Conceito-Chave: É uma lesão *contrátil* (puxa o tecido), não *infiltrativa* (empurra o tecido).</p>
+                        <div class="mt-4">
+                            <h3 class="text-lg font-bold text-blue-800">1. O Núcleo Central (A "Cicatriz")</h3>
+                            <ul class="list-disc list-inside ml-4">
+                                <li>Estroma denso <strong class="text-blue-700">fibroelástico</strong> (colágeno + elastose).</li>
+                                <li>Glândulas e ductos benignos <strong class="text-blue-700">"aprisionados"</strong> (entrapped), distorcidos e comprimidos.</li>
+                            </ul>
+                        </div>
+                        <div class="mt-4">
+                            <h3 class="text-lg font-bold text-blue-800">2. A Periferia Radiada (A "Corona")</h3>
+                            <ul class="list-disc list-inside ml-4">
+                                <li>Lóbulos e ductos normais sendo "puxados" para o centro.</li>
+                                <li>Frequentemente mostra proliferação: Cistos, Hiperplasia Ductal Usual (UDH), Adenose.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Coluna de Imagem -->
+                    <div class="flex flex-col items-center">
+                        <img src="https://www.pathologyoutlines.com/imgau/breastradialscar_reisenbichler04.jpg" 
+                             alt="H&E Baixo Aumento: Cicatriz Radial" 
+                             class="rounded-lg shadow-md border-4 border-white w-full">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 4: O Diagnóstico Diferencial (H&E) -->
+            <div id="slide-4" class="slide">
+                <h2 class="text-3xl font-bold text-blue-900 mb-6">3. O Diagnóstico Diferencial: H&E (Alto Aumento)</h2>
+                <p class="text-xl text-center mb-6">A chave: <strong class="text-red-700">A Camada Mioepitelial</strong></p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    
+                    <!-- Card: Cicatriz Radial (Benigna) -->
+                    <div class="bg-green-50 border-l-4 border-green-500 p-4 rounded-lg shadow">
+                        <h3 class="text-2xl font-bold text-green-800 mb-3">Cicatriz Radial (Benigna)</h3>
+                        <ul class="list-disc list-inside ml-4 space-y-2 text-lg">
+                            <li>Ductos aprisionados **MANTÊM** as duas camadas celulares (epitelial interna, mioepitelial externa).</li>
+                            <li>Camada mioepitelial pode estar "atenuada", mas está presente.</li>
+                            <li>Estroma <strong class="text-green-700">fibroelástico</strong> (acelular, "blando").</li>
+                        </ul>
+                        <img src="https://www.pathologyoutlines.com/imgau/breastradialscar_reisenbichler03.jpg" 
+                             alt="H&E Alto Aumento: Ducto Benigno em CR" 
+                             class="rounded-lg shadow-md border-4 border-white w-full mt-4">
+                    </div>
+
+                    <!-- Card: Carcinoma Tubular (Maligno) -->
+                    <div class="bg-red-50 border-l-4 border-red-500 p-4 rounded-lg shadow">
+                        <h3 class="text-2xl font-bold text-red-800 mb-3">Carcinoma Tubular (Maligno)</h3>
+                        <ul class="list-disc list-inside ml-4 space-y-2 text-lg">
+                            <li>Túbulos invasivos **PERDERAM** a camada mioepitelial.</li>
+                            <li>São estruturas "nus", apenas de células epiteliais malignas.</li>
+                            <li>Estroma <strong class="text-red-700">desmoplásico</strong> (reativo, inflamatório).</li>
+                        </ul>
+                        <img src="https://www.pathologyoutlines.com/imgau/breastradialscar_microMuller18.jpg" 
+                             alt="H&E Alto Aumento: Carcinoma Tubular" 
+                             class="rounded-lg shadow-md border-4 border-white w-full mt-4">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 5: Imuno-histoquímica -->
+            <div id="slide-5" class="slide">
+                <h2 class="text-3xl font-bold text-blue-900 mb-6">4. A Prova: Imuno-histoquímica (IHQ)</h2>
+                <p class="text-xl text-center mb-6">Quando o H&E é duvidoso (especialmente na core biopsy), usamos marcadores mioepiteliais:</p>
+                <p class="text-2xl text-center font-semibold text-blue-800 mb-6">p63 (nuclear) ou Calponina (citoplasmática)</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    
+                    <!-- Card: IHQ na Cicatriz Radial -->
+                    <div class="bg-green-50 border-l-4 border-green-500 p-4 rounded-lg shadow text-center">
+                        <h3 class="text-2xl font-bold text-green-800 mb-3">Positivo na Cicatriz Radial</h3>
+                        <img src="https://storage.googleapis.com/dl.dentistrykey.com/clinical/DiagnosticImmunohistologyoftheBreast/1_3s20B9780323795227000114.jpg" 
+                             alt="IHQ p63 Positiva em Cicatriz Radial" 
+                             class="rounded-lg shadow-md border-4 border-white w-full mb-4">
+                        <p class="text-lg">O p63 (marrom) marca os núcleos da camada mioepitelial externa, confirmando a benignidade.</p>
+                    </div>
+
+                    <!-- Card: IHQ no Carcinoma Invasivo -->
+                    <div class="bg-red-50 border-l-4 border-red-500 p-4 rounded-lg shadow text-center">
+                        <h3 class="text-2xl font-bold text-red-800 mb-3">Negativo no Carcinoma</h3>
+                        <img src="https://www.pathologyoutlines.com/imgau/breastradialscar_microMuller17.jpg" 
+                             alt="IHQ p63 Negativa em Carcinoma Invasivo" 
+                             class="rounded-lg shadow-md border-4 border-white w-full mb-4">
+                        <p class="text-lg">Os túbulos invasivos são negativos para p63, confirmando a ausência da camada mioepitelial.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 6: Potencial Biológico e Risco -->
+            <div id="slide-6" class="slide">
+                <h2 class="text-3xl font-bold text-blue-900 mb-6">5. Potencial Biológico: É Pré-Maligna?</h2>
+                
+                <p class="text-4xl font-bold text-red-700 text-center mb-6">Resposta Curta (WHO): NÃO.</p>
+                
+                <p class="text-xl text-gray-800 mb-6">A CR/LEC não é considerada uma lesão precursora direta que se transforma em câncer. O risco é de dois tipos:</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    
+                    <!-- Card: Risco por Associação -->
+                    <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 rounded-lg shadow">
+                        <h3 class="text-2xl font-bold text-yellow-800 mb-3">1. Risco por ASSOCIAÇÃO</h3>
+                        <p class="text-lg mb-2">A lesão pode *abrigar* ou estar junto de lesões de maior risco.</p>
+                        <ul class="list-disc list-inside ml-4 space-y-2 text-lg">
+                            <li>Hiperplasia Ductal Atípica (HDA)</li>
+                            <li>Carcinoma Ductal In Situ (CDIS)</li>
+                        </ul>
+                        <p class="text-lg mt-3">É o "risco de upgrade" na cirurgia se a biópsia mostrar atipia.</p>
+                    </div>
+
+                    <!-- Card: Risco Independente -->
+                    <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-lg shadow">
+                        <h3 class="text-2xl font-bold text-blue-800 mb-3">2. Risco INDEPENDENTE</h3>
+                        <p class="text-lg mb-2">A lesão "pura" (sem atipia) funciona como um *marcador* de risco.</p>
+                        <p class="text-5xl font-bold text-blue-700 text-center my-4">RR ≈ 1.5 - 1.8</p>
+                        <p class="text-lg text-center">Risco modesto, similar ao de outras lesões proliferativas sem atipia (ex: Hiperplasia Ductal Florida).</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 7: Conclusões e Correlação -->
+            <div id="slide-7" class="slide">
+                <h2 class="text-3xl font-bold text-blue-900 mb-6">6. Conclusões e Correlação Rádio-Patológica</h2>
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4">Mensagens Finais e Pontos-Chave:</h3>
+                
+                <ul class="list-decimal list-inside space-y-4 text-xl text-gray-700">
+                    <li>CR e LEC são um espectro da mesma lesão (diferença no tamanho).</li>
+                    <li>Nosso diagnóstico diferencial (CR vs. Ca. Tubular) depende da <strong class="text-blue-700">camada mioepitelial</strong>, confirmada por IHQ (p63).</li>
+                    <li><strong class="text-red-700">Não é uma lesão pré-maligna</strong>, mas sim um <strong class="text-red-700">marcador de risco modesto</strong> (RR ~1.7) para câncer futuro.</li>
+                    <li>O perigo real imediato é a <strong class="text-red-700">ATIPIA</strong> associada.</li>
+                </ul>
+
+                <div class="bg-yellow-100 p-6 rounded-lg border border-yellow-300 mt-8 shadow-lg">
+                    <h4 class="text-xl font-bold text-yellow-900">A Tendência Moderna e a Importância da Correlação:</h4>
+                    <p class="text-lg text-yellow-800 mt-3">
+                        Se a core biopsy mostra CR/LEC <strong class="font-bold">SEM ATIPIA</strong> e há <strong class="font-bold">TOTAL CONCORDÂNCIA RÁDIO-PATOLÓLICA</strong> (a imagem é 100% compatível com o nosso achado), a excisão cirúrgica pode não ser mais necessária.
+                    </p>
+                    <p class="text-xl font-semibold text-yellow-900 mt-4">Nosso diálogo é fundamental!</p>
+                </div>
+            </div>
+
+            <!-- Slide 8: Perguntas -->
+            <div id="slide-8" class="slide">
+                <div class="flex flex-col items-center justify-center min-h-[450px]">
+                    <h2 class="text-5xl font-bold text-blue-900 mb-6">Obrigado.</h2>
+                    <p class="text-3xl text-gray-700">Perguntas?</p>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- Navegação -->
+        <footer class="flex items-center justify-between p-4 bg-gray-100 border-t border-gray-300">
+            <button id="prevBtn" class="nav-button bg-blue-700 hover:bg-blue-800">Anterior</button>
+            <span id="slideCounter" class="text-sm font-semibold text-gray-700">Slide 1 / 8</span>
+            <button id="nextBtn" class="nav-button bg-blue-700 hover:bg-blue-800">Próximo</button>
+        </footer>
+    </div>
+
+    <script>
+        // Lógica simples para a apresentação de slides
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('.slide');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const slideCounter = document.getElementById('slideCounter');
+            
+            let currentSlide = 0;
+            const totalSlides = slides.length;
+
+            function showSlide(slideIndex) {
+                // Esconde todos os slides
+                slides.forEach(slide => {
+                    slide.classList.remove('slide-active');
+                });
+
+                // Mostra o slide atual
+                slides[slideIndex].classList.add('slide-active');
+
+                // Atualiza o contador
+                slideCounter.textContent = `Slide ${slideIndex + 1} / ${totalSlides}`;
+
+                // Habilita/desabilita botões
+                prevBtn.disabled = (slideIndex === 0);
+                nextBtn.disabled = (slideIndex === totalSlides - 1);
+
+                // Muda o texto do último botão
+                if (slideIndex === totalSlides - 1) {
+                    nextBtn.textContent = 'Fim';
+                } else {
+                    nextBtn.textContent = 'Próximo';
+                }
+            }
+
+            // Event Listeners
+            prevBtn.addEventListener('click', () => {
+                if (currentSlide > 0) {
+                    currentSlide--;
+                    showSlide(currentSlide);
+                }
+            });
+
+            nextBtn.addEventListener('click', () => {
+                if (currentSlide < totalSlides - 1) {
+                    currentSlide++;
+                    showSlide(currentSlide);
+                }
+            });
+
+            // Mostra o primeiro slide ao carregar
+            showSlide(currentSlide);
+        });
+    </script>
+
+</body>
+</html>
+
